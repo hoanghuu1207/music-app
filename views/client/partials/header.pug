@@ -1,0 +1,40 @@
+header.header
+  .container
+    .row.align-items-center
+      .col-3
+        .inner-logo
+          a(href="/")
+            img(src="/images/logo.png", alt="Logo")
+
+      .col-5
+        .box-search
+          form(
+            action="/search/result"
+            method="GET"
+          )
+            div(class="form-group d-flex mb-0")
+              input(
+                type="text"
+                placeholder="Nhập từ khóa..."
+                class="form-control"
+                name="keyword"
+                value=keyword
+              )
+              button(
+                type="submit"
+                class="btn btn-primary"
+              ) Tìm
+
+          .inner-suggest
+            .inner-list
+
+
+      .col-4
+        .inner-menu
+          ul
+            li
+              a(href="/") <i class="fa-solid fa-house"></i> Trang chủ
+            li
+              a(href="/topics") <i class="fa-solid fa-music"></i> Chủ đề
+            li
+              a(href="/favorite-songs") <i class="fa-solid fa-heart"></i> Yêu thích

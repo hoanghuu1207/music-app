@@ -1,0 +1,120 @@
+extends ../../layouts/default.pug
+
+block main
+  h1(class="mb-4") #{pageTitle}
+
+  form(
+      action=`/${prefixAdmin}/songs/create`
+      method="POST"
+      enctype="multipart/form-data"
+    )
+      div(class="form-group")
+        label(for="title") Tiêu đề
+        input(
+          type="text"
+          class="form-control"
+          id="title"
+          name="title"
+          required
+        )
+
+      div(class="form-group")
+        label(for="topic") Chủ đề
+        select(
+          name="topicId"
+          id="topic"
+          class="form-control"
+          required
+        )
+          option(value="" disabled selected) -- Chọn chủ đề --
+          each item in topics
+            option(value=item.id) #{item.title}
+
+      div(class="form-group")
+        label(for="singer") Ca sĩ
+        select(
+          name="singerId"
+          id="singer"
+          class="form-control"
+          required
+        )
+          option(value="" disabled selected) -- Chọn ca sĩ --
+          each item in singers
+            option(value=item.id) #{item.fullName}
+      div(
+        class="form-group"
+        upload-image
+      )
+        label(for="avatar") Ảnh
+        input(
+          type="file"
+          class="form-control-file"
+          id="avatar"
+          name="avatar"
+          accept="image/*"
+          upload-image-input
+        )
+        img(
+          src=""
+          class="image-preview"
+          upload-image-preview
+        )
+      div(
+        class="form-group"
+        upload-audio
+      )
+        label(for="audio") File âm thanh
+        input(
+          type="file"
+          class="form-control-file"
+          id="audio"
+          name="audio"
+          accept="audio/*"
+          upload-audio-input
+        )
+        audio(controls upload-audio-play)
+          source(src="")
+
+      div(class="form-group")
+        label(for="lyrics") Lời bài hát
+        textarea(
+          class="form-control"
+          id="lyrics"
+          name="lyrics"
+          rows="20"
+        )
+
+      div(class="form-group")
+        label(for="desc") Mô tả
+        textarea(
+          type="text"
+          class="form-control"
+          id="desc"
+          name="description"
+          rows="5"
+          textarea-mce
+        )
+      div(class="form-group form-check form-check-inline")
+        input(
+          type="radio"
+          class="form-check-input"
+          id="statusActive"
+          name="status"
+          value="active"
+          checked
+        )
+        label(for="statusActive" class="form-check-label") Hoạt động
+      div(class="form-group form-check form-check-inline")
+        input(
+          type="radio"
+          class="form-check-input"
+          id="statusInActive"
+          name="status"
+          value="inactive"
+        )
+        label(for="statusInActive" class="form-check-label") Dừng hoạt động
+      div(class="form-group")
+        button(
+          type="submit"
+          class="btn btn-primary"
+        ) Tạo mới
