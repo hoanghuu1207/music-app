@@ -56,5 +56,18 @@ export const edit = async (req: Request, res: Response) => {
 export const editPatch = async (req: Request, res: Response) => {
   const id = req.params.id;
   
-  console.log(req.body)
+  const singer = {
+    fullName: req.body.fullName,
+    status: req.body.status
+  }
+
+  if(req.body.avatar){
+    singer["avatar"] = req.body.avatar[0];
+  }
+
+  await Singer.updateOne({
+    _id: id
+  }, singer);
+
+  res.redirect("back");
 }
