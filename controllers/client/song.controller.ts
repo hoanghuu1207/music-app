@@ -38,11 +38,15 @@ export const list = async (req: Request, res: Response) => {
 export const detail = async (req: Request, res: Response) => {
   const slugSong: string = req.params.slugSong;
 
+  console.log(slugSong);
+
   const song = await Song.findOne({
     slug: slugSong,
     deleted: false,
     status: "active"
   });
+
+  console.log(song);
 
   const singer = await Singer.findOne({
     _id: song.singerId,
