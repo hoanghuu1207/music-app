@@ -16,7 +16,7 @@ export const list = async (req: Request, res: Response) => {
     topicId: topic.id,
     status: "active",
     deleted: false
-  }).select("avatar title slug singerId like");
+  }).select("avatar title slug singerId like updatedAt createdAt");
 
   for (const song of songs) {
     const infoSinger = await Singer.findOne({

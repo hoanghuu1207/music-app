@@ -1,40 +1,23 @@
-header.header
-  .container
-    .row.align-items-center
-      .col-3
-        .inner-logo
-          a(href="/")
-            img(src="/images/logo.png", alt="Logo")
+header
+  .container.header-container
+    a.logo(href='/') MusicVN
+    .search-bar.box-search
+      form(action='/search/result', method='GET')
+        input.form-control(type='text', placeholder='Tìm kiếm bài hát, nghệ sĩ...', name='keyword', value=keyword)
+        button(type='submit')
+          i.fas.fa-search
 
-      .col-5
-        .box-search
-          form(
-            action="/search/result"
-            method="GET"
-          )
-            div(class="form-group d-flex mb-0")
-              input(
-                type="text"
-                placeholder="Nhập từ khóa..."
-                class="form-control"
-                name="keyword"
-                value=keyword
-              )
-              button(
-                type="submit"
-                class="btn btn-primary"
-              ) Tìm
-
-          .inner-suggest
-            .inner-list
-
-
-      .col-4
-        .inner-menu
-          ul
-            li
-              a(href="/") <i class="fa-solid fa-house"></i> Trang chủ
-            li
-              a(href="/topics") <i class="fa-solid fa-music"></i> Chủ đề
-            li
-              a(href="/favorite-songs") <i class="fa-solid fa-heart"></i> Yêu thích
+      .inner-suggest
+        .inner-list
+    nav
+      ul
+        li
+          a(href='/') Trang chủ
+        li
+          a(href='/topics') Chủ đề
+        // <li><a href="#">BXH</a></li>
+        li
+          a(href='/favorite-songs') Yêu thích
+    // <div class="user-actions">
+    // <a href="#"><i class="fas fa-user"></i> Đăng nhập</a>
+    // </div>

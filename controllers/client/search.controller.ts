@@ -22,7 +22,7 @@ export const result = async  (req: Request, res: Response) => {
         { slug: stringSlugRegex }
       ],
       deleted: false
-    });
+    }).limit(5);
 
     for (const song of songs) {
       const infoSinger = await Singer.findOne({
@@ -41,6 +41,36 @@ export const result = async  (req: Request, res: Response) => {
           fullName: infoSinger.fullName
         }
       });
+    }
+
+    const singers = await Singer.find({
+      $or: [
+        { fullName: keywordRegex },
+        { slug: stringSlugRegex }
+      ],
+      deleted: false
+    }).limit(5);
+
+    for(const singer of singers){
+      const songs = await Song.find({
+        singerId: singer.id,
+        deleted: false
+      }).limit(5);
+
+      for (const song of songs) {
+        const exists = newSongs.some(existingSong => existingSong.slug === song.slug);
+        if (!exists) {
+          newSongs.push({
+            title: song.title,
+            avatar: song.avatar,
+            like: song.like,
+            slug: song.slug,
+            infoSinger: {
+              fullName: singer.fullName
+            }
+          });
+        }
+      }
     }
 
     // newSongs = songs;

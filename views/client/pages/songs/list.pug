@@ -7,7 +7,6 @@ block main
       .col-12
         +box-head(titlepage)
 
-
     .row
       each song in songs
         .col-6.mb-3
@@ -17,7 +16,7 @@ block main
                 img(src=song.avatar)
             div(class="inner-content")
               div(class="inner-title")
-                a(href=`/songs/detail/${song.slug}`) #{song.title}
+              a(href=`/songs/detail/${song.slug}`) #{song.title}
               div(class="inner-singer") <i class="fa-solid fa-microphone-lines"></i> #{song.infoSinger.fullName}
               div(class="inner-like") <i class="fa-solid fa-thumbs-up"></i> #{song.like}
-              div(class="inner-time") <i class="fa-regular fa-clock"></i> Hôm nay
+              div(class="inner-time") <i class="fa-regular fa-clock"></i> #{new Date(song.updatedAt || song.createdAt).toLocaleDateString('en-GB')}

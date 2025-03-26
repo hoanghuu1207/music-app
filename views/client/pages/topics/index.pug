@@ -2,17 +2,17 @@ extends ../../layouts/default.pug
 include ../../mixins/box-head.pug
 
 block main
-  .container.my-3
-    .row
-      .col-12
-        +box-head(titlePage)
-    
-    .row
-      each topic in topics
-        .col-6.mb-3
-          div(class="card")
-            img(src=topic.avatar)
-            div(class="card-body")
-              h5(class="card-title") #{topic.title}
-              p(class="card-text") #{topic.description}
-              a(href=`/songs/${topic.slug}` class="btn btn-primary") Xem chi tiết 
+  section.categories
+    .container
+      h2.section-title #{titlePage}
+      .categories-grid
+        each item in topics
+          .category-card
+            .category-image
+              img(src=item.avatar, alt=item.title)
+              .category-icon
+                i.fas.fa-music
+            .category-content
+              h3 #{item.title}
+              p #{item.description}
+              a.btn(href=`/songs/${item.slug}`) Xem chi tiết
