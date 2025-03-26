@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import morgan from "morgan";
 import * as database from "./config/database";
 import methodOverride from "method-override";
+import cookieParser from "cookie-parser";
 
 import clientRoute from "./routes/client/index.route";
 import adminRoute from "./routes/admin/index.route";
@@ -26,6 +27,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.set("views", "./views");
 app.set("view engine", "pug");
+
+app.use(cookieParser());
 
 app.use(morgan('dev'));
 

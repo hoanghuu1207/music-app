@@ -1,0 +1,76 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  title #{titlePage}
+  link(rel='stylesheet', href='/admin/css/login.css')
+  link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css')
+.container
+  .header
+    .logo
+      .logo-icon
+        i.fas.fa-music
+      h1 Music App
+    p.subtitle Sign in to access your playlists and favorites
+  .form-container
+    .tabs
+      button.tab-btn.active(data-tab='login') Login
+    #login-tab.tab-content.active
+      form(
+        id='login-form'
+        action='/admin/auth/login'
+        method='POST'
+      )
+        .form-group
+          label(for='login-email') Email
+          input#login-email(type='text', name='email', placeholder='your@email.com', required='')
+        .form-group
+          .password-header
+            label(for='login-password') Password
+            a.forgot-password(href='#') Forgot password?
+          input#login-password(type='password', name='password', placeholder='••••••••', required='')
+        .form-group.remember-me
+          input#remember(type='checkbox')
+          label(for='remember') Remember me
+        button.btn.btn-primary.btn-block(type='submit')
+          span.btn-text Sign in
+          span.btn-loading.hidden
+            i.fas.fa-spinner.fa-spin
+            |  Signing in...
+      .divider
+        span Or continue with
+      .social-login
+        button.btn.btn-outline
+          i.fab.fa-github
+          |  Github
+        button.btn.btn-outline
+          i.fas.fa-music
+          |  Music ID
+    #register-tab.tab-content
+      form#register-form
+        .form-group
+          label(for='register-name') Full Name
+          input#register-name(type='text', placeholder='John Doe', required='')
+        .form-group
+          label(for='register-email') Email
+          input#register-email(type='email', placeholder='your@email.com', required='')
+        .form-group
+          label(for='register-password') Password
+          input#register-password(type='password', placeholder='••••••••', required='')
+        .form-group
+          label(for='confirm-password') Confirm Password
+          input#confirm-password(type='password', placeholder='••••••••', required='')
+        button.btn.btn-primary.btn-block(type='submit')
+          span.btn-text Create account
+          span.btn-loading.hidden
+            i.fas.fa-spinner.fa-spin
+            |  Creating account...
+      .divider
+        span Or register with
+      .social-login
+        button.btn.btn-outline
+          i.fab.fa-github
+          |  Github
+        button.btn.btn-outline
+          i.fas.fa-music
+          |  Music ID
