@@ -37,6 +37,12 @@ app.locals.prefixAdmin = systemConfig.prefixAdmin;
 clientRoute(app);
 adminRoute(app);
 
+app.get("*", (req, res) => {
+  res.render("client/pages/errors/404", {
+    titlePage: "404 Not Found"
+  });
+});
+
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
 });

@@ -52,6 +52,11 @@ app.use((0, morgan_1.default)('dev'));
 app.locals.prefixAdmin = system_1.systemConfig.prefixAdmin;
 (0, index_route_1.default)(app);
 (0, index_route_2.default)(app);
+app.get("*", (req, res) => {
+    res.render("client/pages/errors/404", {
+        titlePage: "404 Not Found"
+    });
+});
 app.listen(port, () => {
     console.log(`App listening on port ${port}`);
 });
