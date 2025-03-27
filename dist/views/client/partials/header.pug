@@ -1,0 +1,23 @@
+header
+  .container.header-container
+    a.logo(href='/') MusicVN
+    .search-bar.box-search
+      form(action='/search/result', method='GET')
+        input.form-control(type='text', placeholder='Tìm kiếm bài hát, nghệ sĩ...', name='keyword', value=keyword)
+        button(type='submit')
+          i.fas.fa-search
+
+      .inner-suggest
+        .inner-list
+    nav
+      ul
+        li
+          a(href='/') Trang chủ
+        li
+          a(href='/topics') Chủ đề
+        // <li><a href="#">BXH</a></li>
+        li
+          a(href='/favorite-songs') Yêu thích
+    // <div class="user-actions">
+    // <a href="#"><i class="fas fa-user"></i> Đăng nhập</a>
+    // </div>

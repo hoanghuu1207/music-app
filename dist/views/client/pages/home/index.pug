@@ -1,0 +1,42 @@
+extends ../../layouts/default.pug
+
+block main
+  // Hero Section
+  section.hero
+    .container
+      h1 Kh&aacute;m ph&aacute; th&#x1EBF; gi&#x1EDB;i &acirc;m nh&#x1EA1;c
+      p
+        | H&agrave;ng tri&#x1EC7;u b&agrave;i h&aacute;t, podcast v&agrave; playlist d&agrave;nh cho b&#x1EA1;n. Nghe nh&#x1EA1;c mi&#x1EC5;n ph&iacute; v&#x1EDB;i ch&#x1EA5;t l&#x1B0;&#x1EE3;ng cao.
+      a.hero-btn(href='#') Nghe ngay
+
+  // Music Categories
+  section.categories
+    .container
+      h2.section-title Chủ đề nổi bật
+      .categories-grid
+        each item in topics
+          .category-card
+            .category-image
+              img(src=item.avatar, alt=item.title)
+              .category-icon
+                i.fas.fa-music
+            .category-content
+              h3 #{item.title}
+              p #{item.description}
+              a.btn(href=`/songs/${item.slug}`) Xem chi tiết
+
+  // Featured Songs
+  section.featured-songs
+    .container
+      h2.section-title B&agrave;i h&aacute;t n&#x1ED5;i b&#x1EAD;t
+      .songs-grid
+        each song in songs
+          .song-card
+            .song-image
+              a(href=`/songs/detail/${song.slug}`)
+                img(src=song.avatar, alt=song.title)
+              .play-btn
+                i.fas.fa-play
+            .song-content
+              h3 #{song.title}
+              p #{song.infoSinger.fullName}
