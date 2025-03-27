@@ -16,7 +16,7 @@ database.connect();
 const app: Express = express();
 const port: number = 3000;
 
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use('/tinymce', express.static(path.join(__dirname, 'node_modules', 'tinymce')));
 
