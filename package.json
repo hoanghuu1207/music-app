@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.ts",
-    "build": "rimraf dist && tsc && cp -r public dist/public && cp -r views dist/views",
+    "build": "rimraf dist && tsc && cp -r public dist/public && cp -r views dist/views && cp -r node_modules/tinymce dist/public/tinymce",
     "ts.check": "tsc --project tsconfig.json",
     "add-build": "git add dist",
     "test": "echo \"Error: no test specified\" && exit 1"

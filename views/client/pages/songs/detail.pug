@@ -10,7 +10,7 @@ block main
 
           .inner-actions
             div(class="inner-action inner-time")
-              <i class="fa-regular fa-clock"></i> 20/10/2023
+              <i class="fa-regular fa-clock"></i> #{new Date(song.updatedAt || song.createdAt).toLocaleDateString('en-GB')}
             div(class="inner-action inner-singer")
               <i class="fa-solid fa-microphone-lines"></i> #{singer.fullName}
             div(class="inner-action inner-topic")

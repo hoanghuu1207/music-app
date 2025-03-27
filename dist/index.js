@@ -41,7 +41,7 @@ database.connect();
 const app = (0, express_1.default)();
 const port = 3000;
 app.use(express_1.default.static(path_1.default.join(__dirname, "public")));
-app.use('/tinymce', express_1.default.static(path_1.default.join(__dirname, 'node_modules', 'tinymce')));
+app.use('/tinymce', express_1.default.static(path_1.default.join(__dirname, 'public', 'tinymce')));
 app.use(express_1.default.json());
 app.use((0, method_override_1.default)("_method"));
 app.use(express_1.default.urlencoded({ extended: true }));
